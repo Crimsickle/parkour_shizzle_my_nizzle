@@ -1,0 +1,178 @@
+[gd_scene load_steps=12 format=3 uid="uid://ch5swycgd2p5t"]
+
+[ext_resource type="Script" uid="uid://cx4e3r8rkuip6" path="res://scripts/game/character_class.gd" id="1_sv6e8"]
+[ext_resource type="Texture2D" uid="uid://ioqivxr5kof3" path="res://assets/sprite_sheets/black_stick.png" id="2_855l4"]
+
+[sub_resource type="Animation" id="Animation_2p47s"]
+resource_name = "idle"
+length = 1.50003
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1.00003, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_40rmj"]
+length = 0.666675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+
+[sub_resource type="Animation" id="Animation_v6x7b"]
+resource_name = "jab1"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666675),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7, 8, 9, 10, 11, 4]
+}
+
+[sub_resource type="Animation" id="Animation_855l4"]
+resource_name = "jump"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_3oano"]
+resource_name = "fall"
+length = 0.40001
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_c8rtk"]
+resource_name = "vault"
+length = 0.250005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [20, 21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_sv6e8"]
+resource_name = "floor_hit"
+length = 0.333342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [37, 38, 39]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3oano"]
+_data = {
+&"RESET": SubResource("Animation_40rmj"),
+&"fall": SubResource("Animation_3oano"),
+&"floor_hit": SubResource("Animation_sv6e8"),
+&"idle": SubResource("Animation_2p47s"),
+&"jump": SubResource("Animation_855l4"),
+&"run": SubResource("Animation_v6x7b"),
+&"vault": SubResource("Animation_c8rtk")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c8rtk"]
+size = Vector2(20, 65.537)
+
+[node name="CharacterObject" type="CharacterBody2D"]
+script = ExtResource("1_sv6e8")
+Speed = 45
+JumpHeight = 90.0
+Gravity = 250.0
+CoyoteTime = 0.125
+SprintSpeed = 1.2
+metadata/_custom_type_script = "uid://cx4e3r8rkuip6"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3oano")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_855l4")
+hframes = 6
+vframes = 7
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.42375)
+scale = Vector2(0.145, 0.135)
+shape = SubResource("RectangleShape2D_c8rtk")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+zoom = Vector2(7.5, 7.5)
+position_smoothing_enabled = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FloorTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true

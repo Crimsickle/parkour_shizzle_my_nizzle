@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7d5brgrkfatb"]
+
+[ext_resource type="Script" uid="uid://ci6wvujd7amsm" path="res://scripts/game/character_modules/vault_component.gd" id="1_lg056"]
+
+[node name="VaultComponent" type="Node2D"]
+script = ExtResource("1_lg056")
+metadata/_custom_type_script = "uid://ci6wvujd7amsm"
+
+[node name="WallCast" type="RayCast2D" parent="."]
+position = Vector2(0, -2)
+scale = Vector2(0.15, 0.15)
+target_position = Vector2(75, 0)
+collision_mask = 2
+
+[node name="ObjCast" type="RayCast2D" parent="."]
+position = Vector2(0, 1)
+scale = Vector2(0.15, 0.15)
+target_position = Vector2(35, 0)
+collision_mask = 2
+
+[node name="HitboxTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AnimTimer" type="Timer" parent="."]
+one_shot = true

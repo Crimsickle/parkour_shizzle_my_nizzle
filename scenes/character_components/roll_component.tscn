@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0fec82bsbc53"]
+
+[ext_resource type="Script" uid="uid://mfgmr8s7hnbg" path="res://scripts/game/character_modules/roll_component.gd" id="1_b4v4p"]
+
+[node name="RollComponent" type="Node2D"]
+script = ExtResource("1_b4v4p")
+metadata/_custom_type_script = "uid://mfgmr8s7hnbg"

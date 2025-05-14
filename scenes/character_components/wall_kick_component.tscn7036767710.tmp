@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2gi1on6lrscw"]
+
+[ext_resource type="Script" uid="uid://dm4sdt31h7dea" path="res://scripts/game/character_modules/wall_kick.gd" id="1_3fq7c"]
+
+[node name="WallKickComponent" type="Node2D"]
+script = ExtResource("1_3fq7c")
+metadata/_custom_type_script = "uid://dm4sdt31h7dea"
+
+[node name="WallCast" type="RayCast2D" parent="."]
+scale = Vector2(0.15, 0.15)
+target_position = Vector2(65, 0)
+
+[node name="AnimTimer" type="Timer" parent="."]
+one_shot = true

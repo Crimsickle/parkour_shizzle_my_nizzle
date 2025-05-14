@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2gi1on6lrscw"]
+
+[ext_resource type="Script" uid="uid://dm4sdt31h7dea" path="res://scripts/game/character_modules/wall_jump.gd" id="1_t6ssx"]
+
+[node name="WallJumpComponent" type="Node2D"]
+script = ExtResource("1_t6ssx")
+metadata/_custom_type_script = "uid://dm4sdt31h7dea"
+
+[node name="WallCast" type="RayCast2D" parent="."]
+scale = Vector2(0.15, 0.15)
+target_position = Vector2(80, 0)
+collision_mask = 2
+
+[node name="WallCast2" type="RayCast2D" parent="."]
+scale = Vector2(0.15, 0.15)
+target_position = Vector2(-40, 0)
+collision_mask = 2
+
+[node name="AnimTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="StoreTimer" type="Timer" parent="."]
