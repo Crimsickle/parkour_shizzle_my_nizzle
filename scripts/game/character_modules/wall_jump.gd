@@ -95,7 +95,7 @@ func _process(delta: float) -> void:
 			
 			Backflipped = true
 			Backflipping = true
-			Character.State = "Backflipping"
+			Character.ChangeState("Backflipping")
 			
 			Character.force_play_anim("wall_kick")
 			
@@ -106,7 +106,7 @@ func _process(delta: float) -> void:
 	
 	if (Character.is_on_floor() or AnimTimer.is_stopped() == true) and Character.State == "Backflipping":
 		Backflipping = false
-		Character.State = "Idle"
+		Character.ChangeState("Idle")
 		
 
 func HitFloor(LastVelo):

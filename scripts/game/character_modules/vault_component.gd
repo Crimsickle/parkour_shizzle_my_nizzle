@@ -57,7 +57,7 @@ func Jump():
 		Character.ChangeHitbox("VaultHitboxes")
 		Character.SetVelo("VaultVelo", Vector2(Character.InputDir * X_Velo, 0))
 		
-		Character.State = "Vaulting"
+		Character.ChangeState("Vaulting")
 		Character.force_play_anim("vault")
 		Character.AnimPlayer.speed_scale = 1
 		
@@ -70,4 +70,4 @@ func TimerEnded():
 	Character.JumpScale = true
 
 func AnimTimerEnded():
-	Character.State = "Idle"
+	Character.ChangeState("Idle")

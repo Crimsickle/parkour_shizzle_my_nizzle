@@ -50,7 +50,7 @@ func Crouch():
 	Crouching = true
 	Character.ChangeHitbox("CrouchHitboxes")
 	
-	Character.State = "Crouching"
+	Character.ChangeState("Crouching")
 	Character.SpeedMult = 0.5
 	
 	Character.AnimationsEnabled = false
@@ -70,7 +70,7 @@ func UnCrouch():
 	Crouching = false
 	Character.ChangeHitbox("IdleHitboxes")
 	
-	Character.State = "Idle"
+	Character.ChangeState("Idle")
 	Character.SpeedMult = 1
 	
 	Character.AnimationsEnabled = true

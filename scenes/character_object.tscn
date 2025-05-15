@@ -177,6 +177,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [26, 27, 28]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"LandSound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_2p47s"]
 resource_name = "idle"
@@ -211,6 +225,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"JumpSound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_46oje"]
@@ -282,6 +310,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [4, 5, 6, 7, 8, 9, 10, 11, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"Footstep"
+}, {
+"args": [],
+"method": &"Footstep"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_8p7y4"]
@@ -464,19 +509,21 @@ AnimLength = 0.9
 position = Vector2(0, 2)
 Character = NodePath("../..")
 Y_Velo = 30
+X_Velo = 60
 AnimTime = 0.18
 HitboxTime = 0.2
 
 [node name="SlidingComponent" parent="Components" node_paths=PackedStringArray("Character") instance=ExtResource("7_c8rtk")]
 Character = NodePath("../..")
-SlideVelo = 110
+SlideVelo = 130
 SlideJumpVelo = 200.0
 SlideDebounce = 0.4
 
 [node name="CrouchComponent" parent="Components" node_paths=PackedStringArray("Character") instance=ExtResource("8_xmw2r")]
 Character = NodePath("../..")
 
-[node name="RollComponent" parent="Components" node_paths=PackedStringArray("Character") instance=ExtResource("9_wag12")]
+[node name="RollComponent" parent="Components" node_paths=PackedStringArray("Character", "GroundSlam") instance=ExtResource("9_wag12")]
 Character = NodePath("../..")
+GroundSlam = NodePath("../GroundSlamComponent")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

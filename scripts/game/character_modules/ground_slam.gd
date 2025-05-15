@@ -31,7 +31,7 @@ func _process(delta: float) -> void:
 	if Enabled == false:
 		return
 	
-	if Input.is_action_just_pressed("ground_slam") and Character.State == "Idle" and Character.is_on_floor() == false:
+	if Input.is_action_just_pressed("ground_slam") and (Character.State == "Idle" or Character.State == "SlideJump") and Character.is_on_floor() == false:
 		if Character.velocity.y > -50:
 			Character.velocity.y = SlamVelo
 			Slamming = true

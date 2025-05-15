@@ -15,6 +15,7 @@ extends Node2D
 @onready var Sprite = Character.get_node("Sprite2D")
 
 var SlideDir = 0
+var SlideJumping : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 	
 	Character.connect("Jump", Jump)
 	Character.connect("HitFloor", HitFloor)
+	Character.connect("StateChanged", StateChanged)
 	
 	SlideAnimTimer.connect("timeout", SlideTimerEnd)
 	SlideJumpAnimTimer.connect("timeout", SlideJumpTimerEnd)
@@ -56,15 +58,15 @@ func _process(delta: float) -> void:
 			Sprite.rotation = deg_to_rad(Character.velocity.y * 0.2)
 	
 	if Character.is_on_floor():
-		Character.SetVelo("SlideJump", Character.GetVelo("SlideJump") * (1 - (delta * 10)))
+		Character.SetVelo("SlideJump", Character.GetVelo("SlideJump") * (1 - (delta * 8)))
 	else:
-		Character.SetVelo("SlideJump", Character.GetVelo("SlideJump") * (1 - (delta * 1.5)))
+		Character.SetVelo("SlideJump", Character.GetVelo("SlideJump") * (1 - (delta * 1)))
 
 func StartSliding(Dir):
 	if Character.State == "Crouching":
 		return
 	
-	Character.State = "Sliding"
+	Character.ChangeState("Sliding")
 	
 	Character.CanMove = false
 	Character.CanChangeInput = false
@@ -92,7 +94,7 @@ func StartSliding(Dir):
 func StopSliding():
 	DebounceTimer.start()
 	
-	Character.State = "Idle"
+	Character.ChangeState("Idle")
 	
 	Character.CanMove = true
 	Character.CanChangeInput = true
@@ -115,8 +117,6 @@ func Jump():
 	if CurrVelo < 60:
 		return
 	
-	print(CurrMult)
-	
 	StopSliding()
 	
 	Character.CanMove = false
@@ -130,15 +130,14 @@ func Jump():
 	
 	Character.velocity.y = -70 * CurrMult
 	
-	Character.State = "SlideJump"
+	Character.ChangeState("SlideJump")
 	Character.force_play_anim("long_jump_start")
 	SlideJumpAnimTimer.start()
-
-func HitFloor(_LastVelo):
-	if Character.State != "SlideJump":
-		return
 	
-	Character.State = "Idle"
+	SlideJumping = true
+
+func StopJump():
+	Character.ChangeState("Idle")
 	
 	Character.CanMove = true
 	Character.CanChangeInput = true
@@ -147,9 +146,23 @@ func HitFloor(_LastVelo):
 	Character.AnimationsEnabled = true
 	
 	Sprite.rotation = deg_to_rad(0)
+	
+	SlideJumping = false
+
+func HitFloor(_LastVelo):
+	if Character.State != "SlideJump":
+		return
+	
+	StopJump()
 
 func SlideTimerEnd():
 	Character.force_play_anim("slide")
 
 func SlideJumpTimerEnd():
 	Character.force_play_anim("long_jump")
+
+func StateChanged(NewState, OldState):
+	if OldState == "SlideJump" and SlideJumping == true:
+		StopJump()
+		Character.SetVelo("Slide", Vector2.ZERO)
+		Character.SetVelo("SlideJump", Vector2.ZERO)

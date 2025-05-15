@@ -5,6 +5,7 @@ signal Jump
 signal HitFloor
 signal StartFalling
 signal StartMoving
+signal StateChanged
 
 @export_category("Basic Stats")
 
@@ -21,12 +22,6 @@ signal StartMoving
 @export var AccelerationSpeed : float = 5
 @export var SprintAccelerationSpeed : float = 5
 @export var DecelerationSpeed : float = 10
-
-@export_category("Sprite")
-
-@export var SpriteTexture : CompressedTexture2D
-@export var HorizontalFrames : int = 1
-@export var VerticalFrames : int = 1
 
 
 @onready var Camera = $Camera2D
@@ -67,6 +62,22 @@ func ChangeHitbox(Name):
 				Hitbox.disabled = false
 			else:
 				Hitbox.disabled = true
+
+func ChangeState(NewState : String):
+	var PastState = State
+	
+	State = NewState
+	
+	StateChanged.emit(NewState, PastState)
+
+func Footstep():
+	pass
+
+func JumpSound():
+	pass
+
+func LandSound():
+	pass
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
