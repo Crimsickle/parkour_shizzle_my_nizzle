@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpgjkemk73yc7"]
+
+[ext_resource type="Texture2D" uid="uid://bqbib2632dwem" path="res://images/character_icons/ltg.png" id="1_13lqd"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchor_right = 0.260417
+anchor_bottom = 0.648148
+offset_right = 3.05176e-05
+offset_bottom = 6.10352e-05
+metadata/_edit_use_anchors_ = true
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CharacterIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.08
+anchor_top = 0.0571429
+anchor_right = 0.93
+anchor_bottom = 0.664286
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_13lqd")
+expand_mode = 1
+
+[node name="SelectButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.084
+anchor_top = 0.797143
+anchor_right = 0.916
+anchor_bottom = 0.931429
+offset_top = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "SELECT CHARACTER"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.705714
+anchor_right = 1.0
+anchor_bottom = 0.77
+offset_top = -23.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 45
+text = "low tier god"
+horizontal_alignment = 1
+vertical_alignment = 1

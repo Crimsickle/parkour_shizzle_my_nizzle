@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://b8mlsw4xfk0lq"]
+
+[ext_resource type="Script" uid="uid://dfcyju3ho45rm" path="res://scripts/resources/character_data.gd" id="1_3bwnd"]
+[ext_resource type="Texture2D" uid="uid://bqbib2632dwem" path="res://images/character_icons/ltg.png" id="1_4m6k8"]
+[ext_resource type="PackedScene" uid="uid://es86yj4pqryv" path="res://scenes/core_game/characters/base.tscn" id="1_iurtq"]
+[ext_resource type="Script" uid="uid://cxixgmme2fl1e" path="res://scripts/resources/layer_data.gd" id="2_nmrs5"]
+[ext_resource type="Resource" uid="uid://ceqrh6gjr102x" path="res://resources/layer_tables/base/base_layer_1.tres" id="3_iurtq"]
+
+[resource]
+script = ExtResource("1_3bwnd")
+CharacterSelectIcon = ExtResource("1_4m6k8")
+CharacterScene = ExtResource("1_iurtq")
+DisplayName = "low tier god"
+Layers = Array[ExtResource("2_nmrs5")]([ExtResource("3_iurtq")])
+metadata/_custom_type_script = "uid://dfcyju3ho45rm"

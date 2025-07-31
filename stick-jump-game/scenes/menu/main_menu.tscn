@@ -1,0 +1,69 @@
+[gd_scene load_steps=5 format=3 uid="uid://bm0oshui7qcwk"]
+
+[ext_resource type="Script" uid="uid://bxf2xq8p5buoi" path="res://scripts/menu/main_menu.gd" id="1_nl8w3"]
+[ext_resource type="Script" uid="uid://dfcyju3ho45rm" path="res://scripts/resources/character_data.gd" id="2_kiqgm"]
+[ext_resource type="Resource" uid="uid://b8mlsw4xfk0lq" path="res://resources/character_config/base.tres" id="3_hj162"]
+[ext_resource type="Resource" uid="uid://5kf4m0ujx1o5" path="res://resources/character_config/test_2.tres" id="4_xn6kt"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nl8w3")
+SelectableCharacters = Array[ExtResource("2_kiqgm")]([ExtResource("3_hj162"), ExtResource("4_xn6kt")])
+
+[node name="PlayMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="PlayMenu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.208073
+anchor_top = 0.362963
+anchor_right = 0.791927
+anchor_bottom = 0.637037
+offset_left = 8.0
+offset_top = 2.0
+offset_right = -8.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 133
+text = "p[lay game"
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterSelect" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HFlowContainer" type="HFlowContainer" parent="CharacterSelect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelSelect" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="PlayMenu/Button" to="." method="_on_button_button_down"]

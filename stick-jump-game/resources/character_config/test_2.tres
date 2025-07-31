@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=6 format=3 uid="uid://5kf4m0ujx1o5"]
+
+[ext_resource type="Texture2D" uid="uid://ci2d4pf84ywuu" path="res://icon.svg" id="1_0wexb"]
+[ext_resource type="PackedScene" uid="uid://es86yj4pqryv" path="res://scenes/core_game/characters/base.tscn" id="1_kvoyq"]
+[ext_resource type="Script" uid="uid://cxixgmme2fl1e" path="res://scripts/resources/layer_data.gd" id="2_44oso"]
+[ext_resource type="Script" uid="uid://dfcyju3ho45rm" path="res://scripts/resources/character_data.gd" id="2_rdnpc"]
+[ext_resource type="Resource" uid="uid://ceqrh6gjr102x" path="res://resources/layer_tables/base/base_layer_1.tres" id="3_kvoyq"]
+
+[resource]
+script = ExtResource("2_rdnpc")
+CharacterSelectIcon = ExtResource("1_0wexb")
+CharacterScene = ExtResource("1_kvoyq")
+DisplayName = "godot robot"
+Layers = Array[ExtResource("2_44oso")]([ExtResource("3_kvoyq")])
+metadata/_custom_type_script = "uid://dfcyju3ho45rm"

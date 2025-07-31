@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LayerData" load_steps=4 format=3 uid="uid://ceqrh6gjr102x"]
+
+[ext_resource type="Script" uid="uid://dnhi05qwqt53" path="res://scripts/resources/level_data.gd" id="1_ku4uy"]
+[ext_resource type="Resource" uid="uid://cjd0xdesuksd4" path="res://resources/levels/base/test_level.tres" id="2_ivs7y"]
+[ext_resource type="Script" uid="uid://cxixgmme2fl1e" path="res://scripts/resources/layer_data.gd" id="3_wnrk4"]
+
+[resource]
+script = ExtResource("3_wnrk4")
+LayerName = ""
+Levels = Array[ExtResource("1_ku4uy")]([ExtResource("2_ivs7y")])
+metadata/_custom_type_script = "uid://cxixgmme2fl1e"

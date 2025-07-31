@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0soy2y3q0mye"]
+
+[ext_resource type="Script" uid="uid://3qpfxjimbyxs" path="res://scripts/loading_screen.gd" id="1_ep5rh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ndlxt"]
+font_size = 116
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ep5rh")
+metadata/_edit_use_anchors_ = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 156
+text = "LOADING..."
+label_settings = SubResource("LabelSettings_ndlxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LoadingText" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.871296
+anchor_right = 1.0
+anchor_bottom = 0.932407
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 46
+text = "0%"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0161458
+anchor_top = 0.934259
+anchor_right = 0.983854
+anchor_bottom = 0.968518
+grow_horizontal = 2
+grow_vertical = 0
+show_percentage = false
+metadata/_edit_use_anchors_ = true

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ndmu3gurfaqy"]
+
+[node name="MainGame" type="Node2D"]
+metadata/dsff = false
+metadata/gf = Basis(1, 0, 0, 0, 1, 0, 0, 0, 1)
